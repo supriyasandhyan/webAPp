@@ -1,0 +1,40 @@
+/* ....CARDS SECTION....  */
+.containerss{
+    background-color: #F8F7FF;
+}
+.card-container{
+    width: 500px;
+    background-color: white;
+    padding: 5px 10px;
+    box-shadow: 0 2px 5px 0 rgba(211, 209, 238, 0.5);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+}
+.cards-section{
+    padding: 30px 60px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 40px;
+}
+.left .icon{
+    width: 40px;
+}
+.right span{
+    font-size: 15px;
+}
+
+.left{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+.right{
+
+}

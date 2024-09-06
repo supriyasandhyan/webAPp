@@ -1,0 +1,51 @@
+.home-main {
+    position: relative;
+    width: 100%;
+}
+
+.home2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    padding: 20px 20px;
+}
+
+.home2 h1 {
+    color: #5E56E7;
+    font-size: 48px;
+    background: transparent;
+}
+
+.home2 p {
+    color: #333333;
+    font-size: 20px;
+    background: transparent;
+}
+
+.pattern-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+
+
+@media (max-width: 480px) {
+    .home2 {
+        padding: 10px;
+    }
+
+    .home2 h1 {
+        font-size: 28px;
+    }
+
+    .home2 p {
+        font-size: 14px;
+    }
+
+    .pattern-img {
+        width: 100%;
+    }
+}
