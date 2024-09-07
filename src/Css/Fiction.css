@@ -8,12 +8,14 @@
   align-items: center;
   gap: 10px;
 }
+
 .header-main span {
   font-size: 25px;
   color: #5E56E7;
   font-weight: 600;
 }
-.back{
+
+.back {
   margin-left: 15px;
 }
 
@@ -30,7 +32,9 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 150px; /* Adjust to match the UI */
+  width: 150px;
+  /* Adjust to match the UI */
+  cursor: pointer;
 }
 
 .Rectangle {
@@ -86,4 +90,10 @@
 
 .search-input::placeholder {
   color: #999;
+}
+
+@media (min-width:320px) and (max-width:768px) {
+  .fiction-main {
+    margin: 0;
+  }
 }

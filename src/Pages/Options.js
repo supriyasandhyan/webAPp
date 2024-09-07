@@ -1,13 +1,6 @@
 import React from "react";
 import next from "../Assets/Next.svg";
-import fiction from "../Assets/Fiction.svg";
 import { cardDb } from "../Common/OptionDb";
-import Philosophy from "../Assets/Philosophy.svg";
-import Drama from "../Assets/Drama.svg";
-import History from "../Assets/History.svg";
-import Humour from "../Assets/Humour.svg";
-import Adventure from "../Assets/Adventure.svg";
-import Politics from "../Assets/Politics.svg";
 import "../Css/OPtions.css";
 
 const Options = () => {

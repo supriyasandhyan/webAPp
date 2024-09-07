@@ -15,13 +15,13 @@ const App = () => {
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/fiction" element={<FictionBookCards />} />
-        <Route path="/drama" element={<DramaBookCards />} />
-        <Route path="/humour" element={<HumourBookCards />} />
-        <Route path="/politics" element={<PoliticsBookCards />} />
-        <Route path="/philosophy" element={<PhilosophyBookCards/>}/>
-        <Route path="/history" element={<HistoryBookCards/>}/>
-        <Route path="/adventure" element={<AdventureBookCards/>}/>
+        <Route path="/fiction" element={<FictionBookCards topic="fiction"/>} />
+        <Route path="/drama" element={<DramaBookCards topic="drama"/>} />
+        <Route path="/humour" element={<HumourBookCards topic="humour"/>} />
+        <Route path="/politics" element={<PoliticsBookCards topic="politics"/>} />
+        <Route path="/philosophy" element={<PhilosophyBookCards topic="philosophy"/>}/>
+        <Route path="/history" element={<HistoryBookCards topic="history"/>}/>
+        <Route path="/adventure" element={<AdventureBookCards topic="adventure"/>}/>
       </Routes>
     </>
   );

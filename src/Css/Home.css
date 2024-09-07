@@ -16,10 +16,12 @@
     color: #5E56E7;
     font-size: 48px;
     background: transparent;
+    text-wrap: wrap;
 }
 
 .home2 p {
     color: #333333;
+    font-weight:500;
     font-size: 20px;
     background: transparent;
 }
@@ -31,21 +33,17 @@
 }
 
 
-
-@media (max-width: 480px) {
+@media (min-width:320px) and (max-width:768px) {
     .home2 {
-        padding: 10px;
-    }
-
-    .home2 h1 {
-        font-size: 28px;
+        margin-top: 65px;
     }
 
     .home2 p {
-        font-size: 14px;
+        font-size: 13px;
     }
 
-    .pattern-img {
-        width: 100%;
+    .home2 h1 {
+        font-size: 35px;
+
     }
 }

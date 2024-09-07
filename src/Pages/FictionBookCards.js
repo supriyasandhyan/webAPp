@@ -1,66 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import back from "../Assets/Back.svg";
 import "../Css/Fiction.css";
-import { FaSearch } from "react-icons/fa";
+import { handleBookClick, truncateTitle, useFetchBooks, useFilteredBooks } from "../Common/utils";
+import Search from "../Common/Search";
 
-function FictionBookCards() {
-  const topic = "fiction"
-  const [books, setBooks] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [filteredBooks, setFilteredBooks] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
+function FictionBookCards({topic}) {
+  // const topic = "adventure";
+  const { books, error, loading } = useFetchBooks(topic);
+  const [searchQuery, setSearchQuery] = useState('');
+  const filteredBooks = useFilteredBooks(books, searchQuery);
 
-  const fallbackImage = "https://upload.wikimedia.org/wikipedia/en/7/73/Oldmansea.jpg"; // Dummy image URL
-  const maxTitleLength = 30;
-
-  useEffect(() => {
-    const fetchBooks = async () => {
-      try {
-        const response = await fetch(
-          `${process.env.REACT_APP_API_BASE_URL}${topic}`
-        );
-        if (!response.ok) {
-          throw new Error("cant fetch books");
-        }
-        const data = await response.json();
-        console.log("api ka data: ", data);
-
-        setBooks(data.results || []);
-        setFilteredBooks(data.results || []);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBooks();
-  }, []);
-
-  useEffect(() => {
-    const filtered = books.filter((book) => {
-      const matchAuthor = book.authors.some((author) =>
-        author.name.toLowerCase().includes(searchQuery.toLowerCase())
-      );
-      
-      const matchTitle = book.title.toLowerCase().includes(searchQuery.toLowerCase());
-  
-      return matchAuthor || matchTitle; // Return true if it matches either the author or the title
-    });
-    setFilteredBooks(filtered);
-  }, [searchQuery, books]);
-  
-
-  const truncateTitle = (title) => {
-    if (title.length > maxTitleLength) {
-      return title.slice(0, maxTitleLength) + "...";
-    }
-    return title;
+  const handleSearchChange = (e) => {
+    setSearchQuery(e.target.value);
   };
 
+  console.log('Topic is: ', topic); // Debugging line
+  console.log('Books are: ', books); // Debugging line
+
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
+  if (error) return <p>{error.message}</p>;
+
   return (
     <div className="fiction-main">
       <div className="header-main">
@@ -70,28 +29,20 @@ function FictionBookCards() {
         <span>Fiction</span>
       </div>
 
-      <div className="search-container">
-        <div className="search-input-wrapper">
-          <FaSearch className="search-icon" />
-          <input
-            type="text"
-            placeholder="Search"
-            className="search-input"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
-      </div>
+      <Search
+        value={searchQuery}
+        onChange={handleSearchChange}
+      />
 
       <div className="container frictionbookCard">
         {filteredBooks.map((book) => (
-          <div className="BookCard-Section" key={book.id}>
+          <div className="BookCard-Section" key={book.id} onClick={() => handleBookClick(book)} >
             {book.formats["image/jpeg"] && (
               <>
                 <div className="BookImage">
-                <img
+                <img 
                 className="Rectangle"
-                src={book.formats["image/jpeg"] || fallbackImage}
+                src={book.formats["image/jpeg"]}
                 alt={book.title}
               />
                 </div>
